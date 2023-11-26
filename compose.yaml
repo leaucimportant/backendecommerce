@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:5-oracle
+    environment:
+      - MYSQL_ROOT_PASSWORD=${SQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_USER=${SQL_USER_NAME}
+      - MYSQL_PASSWORD=${SQL_USER_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "--password=$SQL_ROOT_PASSWORD", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - db:/var/lib/mysql
+
