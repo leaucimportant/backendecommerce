@@ -14,11 +14,15 @@ avec la base de données.
 Un fichier d'environnement `.env` devra être créé.
 
 ```dotenv
-# Environnement 
+# Environnement MSQL
 DATABASE_NAME=
 SQL_ROOT_PASSWORD=
 MYSQL_USER=
 MYSQL_PASSWORD=
+
+# Environnement Backend
+DATABASE_URL=
+DATABASE_USE_ROOT= <true | false>
 ```
 
 # Initialisation de la base de donnée
