@@ -1,6 +1,8 @@
 import dotenv
 import os
 import mysql.connector
+from database import DataBase
+from pprint import pprint
 
 dotenv.load_dotenv()
 
@@ -19,13 +21,19 @@ mydb = mysql.connector.connect(
 )
 
 print(mydb)
+print(type(mydb))
 print(mydb.database)
 print(mydb.user)
 
 cursor = mydb.cursor()
+print(type(cursor))
 cursor.execute("SHOW TABLES;")
 for res in cursor:
     print(res)
 
 cursor.close()
+
+db: DataBase = DataBase(connexion=mydb)
+pprint(db.get_all_article())
+pprint(db.get_all_article_by_id(id=3))
 mydb.close()
