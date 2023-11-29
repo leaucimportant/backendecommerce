@@ -1,39 +1,35 @@
-import dotenv
+# -*- utf-8 -*- #
 import os
-import mysql.connector
-from database import DataBase
-from pprint import pprint
+from pathlib import Path
+
+import dotenv
+
+from .api.articles import blueprint_articles
+
+# set working directory
+os.chdir(Path(__file__).parent)
+
+from flask import Flask
 
 dotenv.load_dotenv()
 
-username = os.environ["MYSQL_USER"]
-password = os.environ["MYSQL_PASSWORD"]
+app: Flask = Flask("Breizhsport API")
+app.register_blueprint(blueprint=blueprint_articles, url_prefix="/articles")
 
-if os.environ["DATABASE_USE_ROOT"] == "true":
-    username = "root"
-    password = os.environ["SQL_ROOT_PASSWORD"]
 
-mydb = mysql.connector.connect(
-    host=os.environ["DATABASE_URL"],
-    user=username,
-    password=password,
-    database=os.environ["DATABASE_NAME"]
-)
+@app.route("/")
+def hello():
+    return "Bienvenue sur l'API REST Breizhsport\n"
 
-print(mydb)
-print(type(mydb))
-print(mydb.database)
-print(mydb.user)
 
-cursor = mydb.cursor()
-print(type(cursor))
-cursor.execute("SHOW TABLES;")
-for res in cursor:
-    print(res)
+@app.route("/health")
+def health():
+    return 200
 
-cursor.close()
 
-db: DataBase = DataBase(connexion=mydb)
-pprint(db.get_all_article())
-pprint(db.get_all_article_by_id(id=3))
-mydb.close()
+def main():
+    app.run("localhost", port=1080)
+
+
+if __name__ == '__main__':
+    main()
