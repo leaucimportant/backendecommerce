@@ -42,11 +42,11 @@ services:
       mysql:
         condition: service_healthy
 
-    healthcheck:
-      test: [ "CMD", "curl", "--fail", "http://localhost:1080/health" ]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+#    healthcheck:
+#      test: [ "CMD", "curl", "--fail", "http://localhost:1080/health" ]
+#      interval: 30s
+#      timeout: 10s
+#      retries: 5
 
 volumes:
   db:

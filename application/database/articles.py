@@ -1,6 +1,6 @@
 from typing import Any
 
-from mysql.connector import CMySQLConnection
+from mysql.connector.connection_cext import CMySQLConnection
 from mysql.connector.cursor_cext import CMySQLCursor
 
 __all__ = ["ArticlesDB"]

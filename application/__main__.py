@@ -4,7 +4,7 @@ from pathlib import Path
 
 import dotenv
 
-from .api.articles import blueprint_articles
+from application.api.articles import blueprint_articles
 
 # set working directory
 os.chdir(Path(__file__).parent)

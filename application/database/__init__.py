@@ -1,4 +1,4 @@
-from mysql.connector import CMySQLConnection
+from mysql.connector.connection_cext import CMySQLConnection
 from .articles import ArticlesDB
 import mysql.connector
 import os
