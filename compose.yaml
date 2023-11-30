@@ -11,7 +11,6 @@ x-database_environments: &db_env
 services:
   mysql:
     restart: always
-    network_mode: "host"
     image: mysql:5-oracle
     env_file:
       - .env
@@ -26,27 +25,27 @@ services:
 
   breizhsport_backend:
     restart: always
-    network_mode: "host"
     build:
       dockerfile: Dockerfile
       context: .
-
+    ports:
+      - "1080:1080"
     env_file:
       - .env
     environment:
       <<: *db_env
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: mysql
       DATABASE_USE_ROOT: ${DATABASE_USE_ROOT}
 
     depends_on:
       mysql:
         condition: service_healthy
 
-#    healthcheck:
-#      test: [ "CMD", "curl", "--fail", "http://localhost:1080/health" ]
-#      interval: 30s
-#      timeout: 10s
-#      retries: 5
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:1080/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
 volumes:
   db:

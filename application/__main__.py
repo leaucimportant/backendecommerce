@@ -9,7 +9,7 @@ from application.api.articles import blueprint_articles
 # set working directory
 os.chdir(Path(__file__).parent)
 
-from flask import Flask
+from flask import Flask,make_response, jsonify
 
 dotenv.load_dotenv()
 
@@ -24,11 +24,11 @@ def hello():
 
 @app.route("/health")
 def health():
-    return 200
+    return make_response(jsonify("health"), 200)
 
 
 def main():
-    app.run("localhost", port=1080)
+    app.run("0.0.0.0", port=1080)
 
 
 if __name__ == '__main__':

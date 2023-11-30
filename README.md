@@ -1,5 +1,6 @@
 <!-- TOC -->
 * [backend-ecommerce](#backend-ecommerce)
+* [Url de connexion](#url-de-connexion)
 * [ENV](#env)
 * [Initialisation de la base de donnée](#initialisation-de-la-base-de-donnée)
 <!-- TOC -->
@@ -8,6 +9,9 @@
 
 Ce projet constitue le coeur de l'application e-commerce de Breizhsport. Il contient l'API et la couche d'interraction
 avec la base de données.
+
+# Url de connexion
+Une fois les services lancées, l'API Breizhsport sera disponible sur cette adresse `http://127.20.0.3:1080/`.
 
 # ENV
 
@@ -21,7 +25,6 @@ MYSQL_USER=
 MYSQL_PASSWORD=
 
 # Environnement Backend
-DATABASE_URL=
 DATABASE_USE_ROOT= <true | false>
 ```
 
