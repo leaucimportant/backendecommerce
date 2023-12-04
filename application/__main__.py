@@ -10,10 +10,12 @@ from application.api.articles import blueprint_articles
 os.chdir(Path(__file__).parent)
 
 from flask import Flask,make_response, jsonify
+from flask_cors import CORS
 
 dotenv.load_dotenv()
 
 app: Flask = Flask("Breizhsport API")
+CORS(app)
 app.register_blueprint(blueprint=blueprint_articles, url_prefix="/articles")
 
 

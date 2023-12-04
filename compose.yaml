@@ -49,5 +49,5 @@ services:
 
 volumes:
   db:
-    labels:
-      - breizhsport_db_volume
+#    labels:
+#      - breizhsport_db_volume
