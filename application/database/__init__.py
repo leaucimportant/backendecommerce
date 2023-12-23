@@ -1,13 +1,15 @@
 from mysql.connector.connection_cext import CMySQLConnection
 from .articles import ArticlesDB
+from .variant import VariantDB
 import mysql.connector
 import os
 
 __all__ = ["DataBase"]
 
 
-class DataBase(ArticlesDB):
+class DataBase(ArticlesDB, VariantDB):
     __instance = None
+
     def __init__(self):
         username = os.environ["MYSQL_USER"]
         password = os.environ["MYSQL_PASSWORD"]
@@ -22,7 +24,8 @@ class DataBase(ArticlesDB):
             password=password,
             database=os.environ["DATABASE_NAME"]
         )
-        super().__init__(connexion=self.__con)
+        ArticlesDB.__init__(self, connexion=self.__con)
+        VariantDB.__init__(self, connexion=self.__con)
 
     @staticmethod
     def get_instance():

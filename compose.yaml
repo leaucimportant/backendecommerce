@@ -12,6 +12,7 @@ services:
   mysql:
     restart: always
     image: mysql:5-oracle
+    network_mode: "host"
     env_file:
       - .env
     environment: *db_env
