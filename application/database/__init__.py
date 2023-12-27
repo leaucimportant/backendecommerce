@@ -1,13 +1,14 @@
 from mysql.connector.connection_cext import CMySQLConnection
 from .articles import ArticlesDB
 from .variant import VariantDB
+from .images import ImagesDB
 import mysql.connector
 import os
 
 __all__ = ["DataBase"]
 
 
-class DataBase(ArticlesDB, VariantDB):
+class DataBase(ArticlesDB, VariantDB, ImagesDB):
     __instance = None
 
     def __init__(self):
@@ -26,6 +27,7 @@ class DataBase(ArticlesDB, VariantDB):
         )
         ArticlesDB.__init__(self, connexion=self.__con)
         VariantDB.__init__(self, connexion=self.__con)
+        ImagesDB.__init__(self, connexion=self.__con)
 
     @staticmethod
     def get_instance():
