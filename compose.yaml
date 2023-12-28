@@ -2,7 +2,7 @@ version: "3.9"
 
 
 
-x-database_environments: &db_env
+x-mysql_environments: &mysql_env
   MYSQL_ROOT_PASSWORD: ${SQL_ROOT_PASSWORD}
   MYSQL_DATABASE: ${DATABASE_NAME}
   MYSQL_USER: ${MYSQL_USER}
@@ -11,18 +11,30 @@ x-database_environments: &db_env
 services:
   mysql:
     restart: always
-    image: mysql:5-oracle
     network_mode: "host"
+    image: mysql:5-oracle
     env_file:
       - .env
-    environment: *db_env
+    environment: *mysql_env
     healthcheck:
       test: [ "CMD", "mysqladmin", "--password=$SQL_ROOT_PASSWORD", "ping", "-h", "localhost" ]
       timeout: 20s
       retries: 10
     volumes:
-      - ./sql_scripts:/docker-entrypoint-initdb.d
+      - ./scripts/mysql:/docker-entrypoint-initdb.d
       - db:/var/lib/mysql
+
+  mongodb:
+    restart: always
+    image: mongo:7.0.5-rc0
+    network_mode: "host"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MGDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MGDB_ROOT_PASSWORD}
+      MONGO_DATABASE_NAME: ${MONGO_DATABASE_NAME}
+
+    volumes:
+      - ./scripts/mongodb:/docker-entrypoint-initdb.d/
 
   breizhsport_backend:
     restart: always
@@ -34,7 +46,7 @@ services:
     env_file:
       - .env
     environment:
-      <<: *db_env
+      <<: *mysql_env
       DATABASE_URL: mysql
       DATABASE_USE_ROOT: ${DATABASE_USE_ROOT}
 
@@ -50,5 +62,3 @@ services:
 
 volumes:
   db:
-#    labels:
-#      - breizhsport_db_volume
