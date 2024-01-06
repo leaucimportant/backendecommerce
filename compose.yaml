@@ -35,6 +35,7 @@ services:
 
     volumes:
       - ./scripts/dbmg:/docker-entrypoint-initdb.d/
+      - mgdb:/data/db
 
   breizhsport_backend:
     restart: always
@@ -62,3 +63,4 @@ services:
 
 volumes:
   db:
+  mgdb:
