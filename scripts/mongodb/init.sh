@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-mongo << EOF
+mongosh << EOF
 use $MONGO_DATABASE_NAME
 
 db.createCollection("avis")
