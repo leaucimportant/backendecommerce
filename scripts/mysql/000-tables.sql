@@ -8,6 +8,17 @@ create table if not exists article
     marque      varchar(25)   not null,
     sexe        varchar(20)   null
 );
+create table images
+(
+    id        int auto_increment
+        primary key,
+    image     varchar(500) not null,
+    idarticle int          null,
+    constraint images_pk2
+        unique (image),
+    constraint images_article_id_fk
+        foreign key (idarticle) references article (id)
+);
 create table if not exists article_variant
 (
     idarticle int not null,

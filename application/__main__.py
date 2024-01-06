@@ -30,6 +30,7 @@ def health():
 
 
 def main():
+    os.environ["DATABASE_URL"]="localhost"
     app.run("0.0.0.0", port=1080)
 
 

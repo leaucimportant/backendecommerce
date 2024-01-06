@@ -36,3 +36,16 @@ INSERT INTO article_variant (idarticle, idvariant) VALUES (3, 4);
 INSERT INTO article_variant (idarticle, idvariant) VALUES (3, 9);
 INSERT INTO article_variant (idarticle, idvariant) VALUES (3, 10);
 INSERT INTO article_variant (idarticle, idvariant) VALUES (3, 11);
+
+INSERT INTO images (id, image, idarticle) VALUES (1, 'https://contents.mediadecathlon.com/p2559467/k$dd26ca80dd9a886bcdc9ac9ff73fb8a0/sq/chaussures-de-basketball-homme-puma-all-pro-nitro-jaune.jpg?f=3000x3000', 2);
+INSERT INTO images (id, image, idarticle) VALUES (2, 'https://contents.mediadecathlon.com/p2559463/k$2489a7e604a7839f10b5bc66dbaab6a9/sq/chaussures-de-basketball-homme-puma-all-pro-nitro-jaune.jpg?f=3000x3000', 2);
+INSERT INTO images (id, image, idarticle) VALUES (3, 'https://contents.mediadecathlon.com/p2559466/k$6791a9500dcf919fe4247f572d4a9d45/sq/chaussures-de-basketball-homme-puma-all-pro-nitro-jaune.jpg?f=3000x3000', 2);
+INSERT INTO images (id, image, idarticle) VALUES (4, 'https://contents.mediadecathlon.com/p2559464/k$d20e6e407dd47261505694a37cadc0d4/sq/chaussures-de-basketball-homme-puma-all-pro-nitro-jaune.jpg?f=3000x3000', 2);
+INSERT INTO images (id, image, idarticle) VALUES (5, 'https://contents.mediadecathlon.com/p2559465/k$b6ab46ddb426b1251c6f3df467e4ad07/sq/chaussures-de-basketball-homme-puma-all-pro-nitro-jaune.jpg?f=3000x3000', 2);
+INSERT INTO images (id, image, idarticle) VALUES (6, 'https://contents.mediadecathlon.com/p2153576/k$f86eb976732c4d4878746933bcc6f6aa/sq/chaussures-impermeables-de-randonnee-montagne-mh500-bleu-femme.jpg?f=3000x3000', 3);
+INSERT INTO images (id, image, idarticle) VALUES (7, 'https://contents.mediadecathlon.com/p2153581/k$6a786736b89d88ac8516db3cea29bed4/sq/chaussures-impermeables-de-randonnee-montagne-mh500-bleu-femme.jpg?f=3000x3000', 3);
+INSERT INTO images (id, image, idarticle) VALUES (8, 'https://contents.mediadecathlon.com/p2153577/k$b85ec415746f19c76538860aa82edb53/sq/chaussures-impermeables-de-randonnee-montagne-mh500-bleu-femme.jpg?f=3000x3000', 3);
+INSERT INTO images (id, image, idarticle) VALUES (9, 'https://contents.mediadecathlon.com/p2153578/k$c59963aa4c19103184cf046bb30200b1/sq/chaussures-impermeables-de-randonnee-montagne-mh500-bleu-femme.jpg?f=3000x3000', 3);
+INSERT INTO images (id, image, idarticle) VALUES (10, 'https://contents.mediadecathlon.com/p2153579/k$cad355c28c75136f9208d70a848cb2d5/sq/chaussures-impermeables-de-randonnee-montagne-mh500-bleu-femme.jpg?f=3000x3000', 3);
+INSERT INTO images (id, image, idarticle) VALUES (11, 'https://contents.mediadecathlon.com/p2153580/k$8cec21268a3cf05812a97ffd487fcf39/sq/chaussures-impermeables-de-randonnee-montagne-mh500-bleu-femme.jpg?f=3000x3000', 3);
+
