@@ -20,7 +20,7 @@ class DataBase(ArticlesDB, VariantDB, ImagesDB):
             password = os.environ["SQL_ROOT_PASSWORD"]
 
         self.__con: CMySQLConnection = mysql.connector.connect(
-            host=os.environ["DATABASE_URL"],
+            host=os.environ["DATABASE_MYSQL_URL"],
             user=username,
             password=password,
             database=os.environ["DATABASE_NAME"]

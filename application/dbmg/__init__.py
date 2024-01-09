@@ -12,7 +12,7 @@ class MgDatabase(AvisDB):
     __instance = None
 
     def __init__(self):
-        db_address: str = "localhost"
+        db_address: str = os.environ["DATABASE_MONGO_URL"]
         username=""
         password=""
         if os.environ["DATABASE_USE_ROOT"] == "true":
