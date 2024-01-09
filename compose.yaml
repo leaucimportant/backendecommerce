@@ -34,7 +34,7 @@ services:
       MONGO_DATABASE_NAME: ${MONGO_DATABASE_NAME}
 
     volumes:
-      - ./scripts/dbmg:/docker-entrypoint-initdb.d/
+      - ./scripts/mongodb:/docker-entrypoint-initdb.d/
       - mgdb:/data/db
 
   breizhsport_backend:

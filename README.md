@@ -26,6 +26,11 @@ MYSQL_PASSWORD=
 
 # Environnement Backend
 DATABASE_USE_ROOT= <true | false>
+
+# Environnement MongoDB
+MGDB_ROOT_USERNAME=
+MGDB_ROOT_PASSWORD=
+MONGO_DATABASE_NAME=
 ```
 
 # Initialisation de la base de donnée
