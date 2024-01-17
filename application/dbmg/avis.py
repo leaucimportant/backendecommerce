@@ -16,4 +16,5 @@ class AvisDB:
             result.pop("idarticle")
             res_avis.append(result)
 
+        results.close()
         return res_avis

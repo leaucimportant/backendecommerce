@@ -22,12 +22,12 @@ class ArticlesDB():
                id, name, price, description, marque, sexe in req_res]
         return res
 
-    def get_all_article_by_id(self, id: int) -> dict[str, Any]:
+    def get_article_by_id(self, id: int) -> dict[str, Any]:
         cursor: CMySQLCursor = self.__con.cursor()
         cursor.execute(f"SELECT id, name, price, description, marque, sexe FROM {self.__table_name} WHERE id={id};")
         req_res: list = cursor.fetchall()
         cursor.close()
-        if req_res == 0:
+        if not req_res:
             return {}
         res = [{"id": id, "name": name, "price": price, "description": description, "marque": marque, "sexe": sexe} for
                id, name, price, description, marque, sexe in req_res][0]

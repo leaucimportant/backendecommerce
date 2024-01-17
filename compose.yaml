@@ -12,6 +12,7 @@ services:
   mysql:
     restart: always
     image: mysql:5-oracle
+    network_mode: "host"
     env_file:
       - .env
     environment: *mysql_env
@@ -26,6 +27,7 @@ services:
   mongodb:
     restart: always
     image: mongo:7.0.5-rc0
+    network_mode: "host"
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MGDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MGDB_ROOT_PASSWORD}
