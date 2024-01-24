@@ -29,6 +29,6 @@ class ArticlesDB():
         cursor.close()
         if not req_res:
             return {}
-        res = [{"id": id, "name": name, "price": price, "description": description, "marque": marque, "sexe": sexe} for
+        res = [{"id": id, "name": name, "price": price, "description": description, "brand": marque, "gender": sexe} for
                id, name, price, description, marque, sexe in req_res][0]
         return res
