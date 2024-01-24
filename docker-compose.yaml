@@ -50,6 +50,7 @@ services:
       DATABASE_MONGO_URL: mongodb
       DATABASE_USE_ROOT: ${DATABASE_USE_ROOT}
 
+
     depends_on:
       mysql:
         condition: service_healthy
