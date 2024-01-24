@@ -22,10 +22,10 @@ def read_articles():
 def read_article_id(id):
     db_inst: DataBase = DataBase.get_instance()
     dbmg_inst: MgDatabase = MgDatabase.get_instance()
-    articles: dict[str, Any] = db_inst.get_all_article_by_id(id)
+    articles: dict[str, Any] = db_inst.get_article_by_id(id)
     articles.update({"variants": db_inst.get_all_variant_by_article_id(id),
                      "images": db_inst.get_all_images_by_article_id(id),
-                     "avis": dbmg_inst.get_all_article_avis(int(id))
+                     "feedbacks": dbmg_inst.get_all_article_avis(int(id))
                      }
                     )
     return make_response(jsonify(articles), 200)

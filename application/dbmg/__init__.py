@@ -3,12 +3,13 @@ import os
 from pymongo import MongoClient
 from pymongo.database import Database
 from .avis import AvisDB
+from .panier import PanierDB
 
 
 __all__ = ["MgDatabase"]
 
 
-class MgDatabase(AvisDB):
+class MgDatabase(AvisDB, PanierDB):
     __instance = None
 
     def __init__(self):
