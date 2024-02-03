@@ -15,7 +15,7 @@ from flask_cors import CORS
 dotenv.load_dotenv()
 
 app: Flask = Flask("Breizhsport API")
-CORS(app, origins=['http://localhost:4200/'])
+CORS(app, origins=['http://localhost:4200/','http://localhost:3000/'])
 app.register_blueprint(blueprint=blueprint_articles, url_prefix="/articles")
 
 
