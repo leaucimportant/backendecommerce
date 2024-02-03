@@ -1,7 +1,5 @@
 version: "3.9"
 
-
-
 x-mysql_environments: &mysql_env
   MYSQL_ROOT_PASSWORD: ${SQL_ROOT_PASSWORD}
   MYSQL_DATABASE: ${DATABASE_NAME}
@@ -16,7 +14,15 @@ services:
       - .env
     environment: *mysql_env
     healthcheck:
-      test: [ "CMD", "mysqladmin", "--password=$SQL_ROOT_PASSWORD", "ping", "-h", "localhost" ]
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "--password=$SQL_ROOT_PASSWORD",
+          "ping",
+          "-h",
+          "localhost"
+        ]
       timeout: 20s
       retries: 10
     volumes:
@@ -30,10 +36,19 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MGDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MGDB_ROOT_PASSWORD}
       MONGO_DATABASE_NAME: ${MONGO_DATABASE_NAME}
-
     volumes:
-      - ./scripts/mongodb:/docker-entrypoint-initdb.d/
       - mgdb:/data/db
+
+  mongo-seed:
+    build:
+      context: ./scripts/mongodb
+      dockerfile: Dockerfile.seed
+      args:
+        - DATABASE_URI=${MONGO_DATABASE_URI}
+        - USERNAME=${MGDB_ROOT_USERNAME}
+        - PASSWORD=${MGDB_ROOT_PASSWORD}
+    depends_on:
+      - mongodb
 
   breizhsport_backend:
     restart: always
@@ -50,13 +65,18 @@ services:
       DATABASE_MONGO_URL: mongodb
       DATABASE_USE_ROOT: ${DATABASE_USE_ROOT}
 
-
     depends_on:
       mysql:
         condition: service_healthy
 
     healthcheck:
-      test: [ "CMD", "curl", "--fail", "http://localhost:1080/health" ]
+      test:
+        [
+          "CMD",
+          "curl",
+          "--fail",
+          "http://localhost:1080/health"
+        ]
       interval: 30s
       timeout: 10s
       retries: 5

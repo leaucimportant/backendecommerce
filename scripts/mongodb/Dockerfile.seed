@@ -1,0 +1,14 @@
+FROM mongo:7.0.5-rc0
+ # Will be set through Environment Files
+ ARG DATABASE_URI
+ ARG USERNAME
+ ARG PASSWORD
+
+ ENV DATABASE_URI ${DATABASE_URI}
+ ENV USERNAME ${USERNAME}
+ ENV PASSWORD ${PASSWORD}
+
+ COPY feedbacks.json feedbacks.json
+
+ CMD mongoimport --username ${USERNAME} --password ${PASSWORD} --authenticationDatabase=admin --uri ${DATABASE_URI} --collection avis --drop --file /feedbacks.json --jsonArray
+
