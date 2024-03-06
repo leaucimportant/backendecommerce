@@ -1,6 +1,6 @@
 qodana:
    image:
-      name: jetbrains/qodana-python:2023.3
+      name: jetbrains/qodana-python-community:2023.3
       entrypoint: [""]
    variables:
       QODANA_TOKEN: $qodana_token
